@@ -8,6 +8,10 @@ Doesn't start under NixOS; bug report: [KMyMoney crashes with coredump at start]
 - [HLedger examples](https://github.com/simonmichael/hledger/tree/master/examples)
 * deps.edn
 See [A little bit of Clojure development info](https://github.com/jafingerhut/jafingerhut.github.com/blob/master/notes/clojure-development.md).
+
+# Introduction
+There's also a blog post:[KMyMoney to HLedger conversion](https://photonsphere.org/posts-output/2020-05-31-kmymoney2hledger/).
+
 # Libraries
 ## Tupelo Forest
 Have you ever wanted to manipulate tree-like data structures such as
@@ -27,7 +31,7 @@ Forest allows you to:
 ## nREPL
 Start nrepl: [nREPL Middleware Setup](https://docs.cider.mx/cider/basics/middleware_setup.html).
 Add the following to `~/.clojure/deps.edn`:
-``` clojure
+```clojure
  ;; https://docs.cider.mx/cider/basics/middleware_setup.html
  ;; Use `clj -A:clj-nREPL` to start an nREPL and in Emacs `cider-connect-clj` or
  ;;     `clj -A:cljs-nREPL` to start an nREPL and in Emacs `cider-connect-cljs`.
@@ -42,9 +46,15 @@ Add the following to `~/.clojure/deps.edn`:
 ```
 
 Then the following can be used to start an clj-nREPL or cljs-nREPL server:
-``` sh
+```sh
 clj -A:clj-nREPL
 clj -A:cljs-nREPL
 ```
 
 Emacs: `cider-connect-clj` or `cider-connect-cljs` on localhost; with reported port.
+
+# Usage
+```sh
+clj -m kmymoney2hledger yourdecompressedkmymoneyinputfile.kmy
+```
+It writes the converted output to `yourdecompressedkmymoneyinputfile.kmy.journal`.
