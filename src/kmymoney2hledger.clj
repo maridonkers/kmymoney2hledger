@@ -43,11 +43,11 @@
   ([x op y & xs]
    (apply infix (cons (infix x op y) xs))))
 
-(defn call-infix
+(defn call-infix-with-fraction
   "Calls infix with appropriately converted string argument."
   [s]
   (let [as (string/replace s #"^([+-])" "0$1")
-        as (string/replace as #"([/*+-])" " $1 ")
+        as (string/replace as #"([/+-])" " $1 ")
         as (string/replace as #"([0-9]+)" "$1.0")
         ias (str "(kmymoney2hledger/infix " as ")")]
     (load-string ias)))
@@ -69,12 +69,6 @@
   [s]
   (when (not (string/blank? s))
     (string/replace s #"[:;|\[\]]" " ")))
-
-(defn replace-interpunction
-  "Replaces interpunction characters."
-  [s]
-  (when (not (string/blank? s))
-    (string/replace s #"[,]\s+" "+")))
 
 (defn trim+condense-whitespaces
   "Trims string and condenses several whitespaces to one space."
@@ -150,6 +144,7 @@
   (let [file-reader (get-file-reader pathname)
         xml-str-raw (file-reader)
         xml-str (apply str
+                       ;; TODO What about e.g. &#xa; ?
                        (filter #(not (Character/isISOControl %))
                                xml-str-raw))]
     (tf/add-tree-xml xml-str)))
@@ -469,7 +464,8 @@
         account-hid (get accounts-index account-id)
         account (account-hierarchical->journal accounts-index account-hid false)
         journal (str PREFIX_POSTING account
-                     POSTFIX_POSTING commodity " " (call-infix split-value)
+                     POSTFIX_POSTING commodity
+                     " " (call-infix-with-fraction split-value)
                      " ; "split-payee
                      SEPARATOR_PAYEE split-memo
                      "\n")] 
@@ -477,12 +473,13 @@
 
 (defn transaction-header-to-journal
   "Writes transaction header to journal target file."
-  [fw transaction-id transaction-attrs payee commodity]
+  [fw transaction-id transaction-attrs payee memo commodity]
   (let [postdate? (contains? transaction-attrs :postdate)
         postdate (when postdate?
                    (date-kmymoney->hledger (get transaction-attrs :postdate)))
         journal (str postdate " (" transaction-id ")"
                      " " payee
+                     " | " memo
                      "\n")]
     (fw journal true)))
 
@@ -498,14 +495,15 @@
         split? (tf/has-descendant? transaction-hid [:* :SPLITS :SPLIT])
         split-hids (when split?
                      (tf/find-hids transaction-hid [:* :SPLITS :SPLIT]))
-        payee (when split?
-                (let [first-hid (first split-hids)
-                      first-attrs (tf/hid->attrs first-hid)]
-                  (get-payee payees-index (get first-attrs :payee ""))))]
+        ;; Also memo (which is HLedger note after |)
+        split-first-hid (when split? (first split-hids))
+        split-first-attrs (when split? (tf/hid->attrs split-first-hid))]
     (fw "\n" true)
-    (transaction-header-to-journal fw
-                                   transaction-id transaction-attrs
-                                   payee commodity)
+    (let [payee (when split? (get-payee payees-index (get split-first-attrs :payee "")))
+          memo (when split? (somewhat-format->hledger (get split-first-attrs :memo "")))]
+      (transaction-header-to-journal fw
+                                     transaction-id transaction-attrs
+                                     payee memo commodity))
     (when (and splits? split?)
       (doseq [split-hid split-hids]
         (transaction-split->journal fw payees-index accounts-index
