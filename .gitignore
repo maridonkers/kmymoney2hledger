@@ -1,0 +1,16 @@
+/github
+/target
+**/.directory
+/.emacs.desktop
+/.emacs.desktop.lock
+/.cpcache/
+/.markdown-preview.html
+/.nrepl-port
+/DEVELOPMENT.org
+/DEVELOPMENT.html
+/DEVELOPMENT.pdf
+/DEVELOPMENT.tex
+/DEVELOPMENT.txt
+/auto/
+/examples/
+/OLD/
