@@ -495,7 +495,6 @@
         split? (tf/has-descendant? transaction-hid [:* :SPLITS :SPLIT])
         split-hids (when split?
                      (tf/find-hids transaction-hid [:* :SPLITS :SPLIT]))
-        ;; Also memo (which is HLedger note after |)
         split-first-hid (when split? (first split-hids))
         split-first-attrs (when split? (tf/hid->attrs split-first-hid))]
     (fw "\n" true)

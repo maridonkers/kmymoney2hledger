@@ -1,6 +1,6 @@
 # Documentation
 ## KMyMoney
-Doesn't start under NixOS; bug report: [KMyMoney crashes with coredump at start](https://github.com/NixOS/nixpkgs/issues/88433).
+This is excellent software, available at: https://kmymoney.org/
 ## HLedger
 - [Ledger for Developers](https://www.ledger-cli.org/3.0/doc/ledger3.html#Ledger-for-Developers)
 - [ledger grammar file](https://github.com/greglook/merkledag-ledger/blob/master/resources/grammar/ledger.bnf)
