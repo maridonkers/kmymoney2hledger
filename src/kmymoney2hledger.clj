@@ -442,7 +442,7 @@
 
 (defn transaction-split->journal
   "Transaction split to journal."
-  [fw payees-index accounts-index commodity split-hid]
+  [fw payees-index accounts-index commodity split-hid unbalanced?]
   (let [split-attrs (tf/hid->attrs split-hid)
         split-memo? (contains? split-attrs :memo)
         split-memo (when split-memo?
@@ -462,7 +462,9 @@
         ;; TODO When applicable add various other fields (e.g. shares, price, reconciledate, reconcileflag, etc.)
         account-id  (tf/hid->attr split-hid :account)
         account-hid (get accounts-index account-id)
-        account (account-hierarchical->journal accounts-index account-hid false)
+        account (str (when unbalanced? "(")
+                     (account-hierarchical->journal accounts-index account-hid false)
+                     (when unbalanced? ")"))
         journal (str PREFIX_POSTING account
                      POSTFIX_POSTING commodity
                      " " (call-infix-with-fraction split-value)
@@ -495,6 +497,7 @@
         split? (tf/has-descendant? transaction-hid [:* :SPLITS :SPLIT])
         split-hids (when split?
                      (tf/find-hids transaction-hid [:* :SPLITS :SPLIT]))
+        split-unbalanced? (= (count split-hids) 1)
         split-first-hid (when split? (first split-hids))
         split-first-attrs (when split? (tf/hid->attrs split-first-hid))]
     (fw "\n" true)
@@ -506,7 +509,7 @@
     (when (and splits? split?)
       (doseq [split-hid split-hids]
         (transaction-split->journal fw payees-index accounts-index
-                                    commodity split-hid)))))
+                                    commodity split-hid split-unbalanced?)))))
 
 (defn convert
   "Converts a specified pathname (command line arguments)."
