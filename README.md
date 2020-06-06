@@ -15,6 +15,10 @@ There's also a blog post:[KMyMoney to HLedger conversion](https://photonsphere.o
 # Usage
 From [Releases](https://github.com/maridonkers/kmymoney2hledger/releases) copy `kmymoney2hledger` and `kmymoney2hledger.jar` to a subdirectory and make `kmymoney2hledger` executable. Put the subdirectory in your path (if it isn't already).
 
+```sh
+kmymoney2hledger yourdecompressedkmymoneyinputfile.kmy
+```
+
 It writes the converted output to `yourdecompressedkmymoneyinputfile.kmy.journal`.
 
 # Technical information
