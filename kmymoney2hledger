@@ -1,0 +1,8 @@
+#!/bin/sh
+#
+# Twitter: @maridonkers | Google+: +MariDonkers | GitHub: maridonkers
+#
+
+DIR="`dirname $0`"
+BASE="`basename $0`"
+java -cp "${DIR}/${BASE}.jar" clojure.main -m kmymoney2hledger $*
