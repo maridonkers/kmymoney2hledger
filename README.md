@@ -12,8 +12,14 @@ See [A little bit of Clojure development info](https://github.com/jafingerhut/ja
 # Introduction
 There's also a blog post:[KMyMoney to HLedger conversion](https://photonsphere.org/posts-output/2020-05-31-kmymoney2hledger/).
 
-# Libraries
-## Tupelo Forest
+# Usage
+Copy `kmymoney2hledger` and `kmymoney2hledger.jar` to a subdirectory and make `kmymoney2hledger` executable. Put the subdirectory in your path (if it isn't already).
+
+It writes the converted output to `yourdecompressedkmymoneyinputfile.kmy.journal`.
+
+# Technical information
+## Libraries
+### Tupelo Forest
 Have you ever wanted to manipulate tree-like data structures such as
 hiccup or HTML? If so, then the tupelo.forest library is for you!
 Forest allows you to:
@@ -27,8 +33,8 @@ Forest allows you to:
 
 [Tupelo Forest - One Tree To Rule Them All](https://github.com/cloojure/tupelo/blob/master/docs/forest.adoc)
 
-# Development
-## nREPL
+## Development
+### nREPL
 Start nrepl: [nREPL Middleware Setup](https://docs.cider.mx/cider/basics/middleware_setup.html).
 Add the following to `~/.clojure/deps.edn`:
 ```clojure
@@ -52,9 +58,3 @@ clj -A:cljs-nREPL
 ```
 
 Emacs: `cider-connect-clj` or `cider-connect-cljs` on localhost; with reported port.
-
-# Usage
-```sh
-clj -m kmymoney2hledger yourdecompressedkmymoneyinputfile.kmy
-```
-It writes the converted output to `yourdecompressedkmymoneyinputfile.kmy.journal`.
