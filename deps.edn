@@ -1,4 +1,9 @@
+;; http://jr0cket.co.uk/2019/07/a-deeper-understanding-of-Clojure-CLI-tools.html
+;; java -cp kmymoney2hledger.jar clojure.main -m kmymoney2hledger
 {:paths ["src"]
  :deps {org.clojure/clojure {:mvn/version "1.10.1"}
         tupelo {:mvn/version "0.9.206"}
-        cider/cider-nrepl {:mvn/version "0.24.0"}}}
+        cider/cider-nrepl {:mvn/version "0.24.0"}}
+ :aliases {:depstar ; clojure -A:depstar -m hf.depstar.uberjar kmymoney2hledger.jar
+           {:extra-deps
+            {seancorfield/depstar {:mvn/version "0.2.4"}}}}}
