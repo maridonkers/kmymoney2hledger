@@ -13,7 +13,7 @@ See [A little bit of Clojure development info](https://github.com/jafingerhut/ja
 There's also a blog post:[KMyMoney to HLedger conversion](https://photonsphere.org/posts-output/2020-05-31-kmymoney2hledger/).
 
 # Usage
-Copy `kmymoney2hledger` and `kmymoney2hledger.jar` to a subdirectory and make `kmymoney2hledger` executable. Put the subdirectory in your path (if it isn't already).
+From [Releases](https://github.com/maridonkers/kmymoney2hledger/releases) copy `kmymoney2hledger` and `kmymoney2hledger.jar` to a subdirectory and make `kmymoney2hledger` executable. Put the subdirectory in your path (if it isn't already).
 
 It writes the converted output to `yourdecompressedkmymoneyinputfile.kmy.journal`.
 
