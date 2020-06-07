@@ -1,19 +1,8 @@
-# Documentation
-## KMyMoney
-Available at: https://kmymoney.org/
-## HLedger
-- [Ledger for Developers](https://www.ledger-cli.org/3.0/doc/ledger3.html#Ledger-for-Developers)
-- [ledger grammar file](https://github.com/greglook/merkledag-ledger/blob/master/resources/grammar/ledger.bnf)
-- [simonmichael / hledger](https://github.com/simonmichael/hledger/tree/master/examples)
-- [HLedger examples](https://github.com/simonmichael/hledger/tree/master/examples)
-* deps.edn
-See [A little bit of Clojure development info](https://github.com/jafingerhut/jafingerhut.github.com/blob/master/notes/clojure-development.md).
-
 # Introduction
 There's also a blog post:[KMyMoney to HLedger conversion](https://photonsphere.org/posts-output/2020-05-31-kmymoney2hledger/).
 
 # Usage
-From [Releases](https://github.com/maridonkers/kmymoney2hledger/releases) copy `kmymoney2hledger` and `kmymoney2hledger.jar` to a subdirectory and make `kmymoney2hledger` executable. Put the subdirectory in your path (if it isn't already).
+From [Releases](https://github.com/maridonkers/kmymoney2hledger/releases) copy `kmymoney2hledger` and `kmymoney2hledger.jar` to a subdirectory and make `kmymoney2hledger` executable. Put the subdirectory in your path (if it isn't already). Also a Java runtime environment (JRE) is required.
 
 ```sh
 kmymoney2hledger yourdecompressedkmymoneyinputfile.kmy
@@ -21,7 +10,22 @@ kmymoney2hledger yourdecompressedkmymoneyinputfile.kmy
 
 It writes the converted output to `yourdecompressedkmymoneyinputfile.kmy.journal`.
 
+### CSV importers
+See the following repositories for import of CSV-files into HLedger journals:
+[Rabobank CSV-export to HLedger converter](https://github.com/maridonkers/rabobankcsvhledger)
+[N26 CSV-export to HLedger converter](https://github.com/maridonkers/n26csvhledger)
+
 # Technical information
+## KMyMoney
+Available at: https://kmymoney.org/
+## HLedger
+Available at: httsp://hledger.org/
+- [Ledger for Developers](https://www.ledger-cli.org/3.0/doc/ledger3.html#Ledger-for-Developers)
+- [ledger grammar file](https://github.com/greglook/merkledag-ledger/blob/master/resources/grammar/ledger.bnf)
+- [simonmichael / hledger](https://github.com/simonmichael/hledger/tree/master/examples)
+- [HLedger examples](https://github.com/simonmichael/hledger/tree/master/examples)
+* deps.edn
+See [A little bit of Clojure development info](https://github.com/jafingerhut/jafingerhut.github.com/blob/master/notes/clojure-development.md).
 ## Libraries
 ### Tupelo Forest
 Have you ever wanted to manipulate tree-like data structures such as
