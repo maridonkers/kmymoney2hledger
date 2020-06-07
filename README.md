@@ -1,6 +1,6 @@
 # Documentation
 ## KMyMoney
-This is excellent software, available at: https://kmymoney.org/
+Available at: https://kmymoney.org/
 ## HLedger
 - [Ledger for Developers](https://www.ledger-cli.org/3.0/doc/ledger3.html#Ledger-for-Developers)
 - [ledger grammar file](https://github.com/greglook/merkledag-ledger/blob/master/resources/grammar/ledger.bnf)
