@@ -19,7 +19,7 @@ See the following repositories for import of CSV-files into HLedger journals:
 ## KMyMoney
 Available at: https://kmymoney.org/
 ## HLedger
-Available at: httsp://hledger.org/
+Available at: https://hledger.org/
 - [Ledger for Developers](https://www.ledger-cli.org/3.0/doc/ledger3.html#Ledger-for-Developers)
 - [ledger grammar file](https://github.com/greglook/merkledag-ledger/blob/master/resources/grammar/ledger.bnf)
 - [simonmichael / hledger](https://github.com/simonmichael/hledger/tree/master/examples)
