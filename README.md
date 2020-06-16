@@ -6,8 +6,9 @@ From [Releases](https://github.com/maridonkers/kmymoney2hledger/releases) copy `
 
 Prior to running the program make a backup of your data; then decompress the KMyMoney file, e.g. using the following commands:
 ```sh
-mv yourdecompressedkmymoneyinputfile.kmy yourdecompressedkmymoneyinputfile.kmy.gz
-gzip -d yourdecompressedkmymoneyinputfile.kmy.gz
+mv yourkmymoneyinputfile.kmy yourkmymoneyinputfile.kmy.gz
+gzip -d yourkmymoneyinputfile.kmy.gz
+mv yourkmymoneyinputfile.kmy yourdecompressedkmymoneyinputfile.kmy
 ```
 
 ```sh
