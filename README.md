@@ -4,6 +4,12 @@ There's also a blog post:[KMyMoney to HLedger conversion](https://photonsphere.o
 # Usage
 From [Releases](https://github.com/maridonkers/kmymoney2hledger/releases) copy `kmymoney2hledger` and `kmymoney2hledger.jar` to a subdirectory and make `kmymoney2hledger` executable. Put the subdirectory in your path (if it isn't already). Also a Java runtime environment (JRE) is required.
 
+Prior to running the program make a backup of your data; then decompress the KMyMoney file, e.g. using the following commands:
+```sh
+mv yourdecompressedkmymoneyinputfile.kmy yourdecompressedkmymoneyinputfile.kmy.gz
+gzip -d yourdecompressedkmymoneyinputfile.kmy.gz
+```
+
 ```sh
 kmymoney2hledger yourdecompressedkmymoneyinputfile.kmy
 ```
