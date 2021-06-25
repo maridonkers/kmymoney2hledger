@@ -1,6 +1,9 @@
 # Introduction
 There's also a blog post:[KMyMoney to HLedger conversion](https://photonsphere.org/posts-output/2020-05-31-kmymoney2hledger/).
 
+# WAIT!
+Just use [isabekov / kmymoney2ledgers](https://github.com/isabekov/kmymoney2ledgers) by [Altynbek Isabekov](https://github.com/isabekov) instead of my conversion program! (It's much better!)
+
 # Usage
 From [Releases](https://github.com/maridonkers/kmymoney2hledger/releases) copy `kmymoney2hledger` and `kmymoney2hledger.jar` to a subdirectory and make `kmymoney2hledger` executable. Put the subdirectory in your path (if it isn't already). Also a Java runtime environment (JRE) is required.
 
